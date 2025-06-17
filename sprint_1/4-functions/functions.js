@@ -4,7 +4,10 @@
  **/
 
 // Код задания 1
-
+function greet(name) {
+   return `Привет, ${name}`;
+}
+console.log(greet("Даша"));
 
 /** Задание 2.
  * Перепиши функцию `multiply` в виде стрелочной функции.
@@ -14,6 +17,8 @@
  *  **/
 
 // Код задания 2
+const multiply = (a, b) => a * b
+console.log(multiply(5, 6));
 
 /**
  * Задание 3.
@@ -21,8 +26,8 @@
  **/
 
 // Код задания 3
-
-
+const sum = (a, b) => a + b;
+console.log(sum(5, 6))
 
 /**
  * Задание 4.
@@ -30,7 +35,25 @@
  **/
 
 // Код задания 4
+function isEven(num) {
+   return (
+      num % 2 === 0 ? true :
+      false 
+   )
+}
+console.log(isEven(10));
+console.log(isEven(9));
 
+//стрелочная
+const isEven2 = num => {
+   return (
+      num % 2 === 0 ? true :
+      false
+   )
+}
+
+console.log(isEven2(10));
+console.log(isEven2(9));
 
 /**
  * Задание 5.
@@ -40,7 +63,10 @@
  **/
 
 // Код задания 5
-
+function formatName(firstName, lastName) {
+   return `${lastName} ${firstName[0]}.`
+}
+console.log(formatName("Иван", "Иванов"))
 
 /**
  * Задание 6.
@@ -52,13 +78,24 @@
  **/
 
 // Код задания 6
-
+function translateStatus(code) {
+   return (
+      code === 'success' ? 'Успешно' :
+      code === 'error' ? 'Ошибка' :
+      code === 'pending' ? 'В ожидании' :
+      'Неизвестно'
+   )
+}
+console.log(translateStatus("pending"))
 
 /**
  * Задание 7.
  Функция canLogin(user) возвращает true, если user.isActive === true и user.role === 'admin'.
  **/
 // Код задания 7
+function canLogin(user) {
+   return user.isActive && user.role === 'admin';
+}
 
 /**
  * Задание 8.
@@ -71,3 +108,8 @@
  **/
 
 // Код задания 8
+const showArgs = (...args) => {
+    console.log(args); 
+ };
+
+showArgs(1, 2, 3);
