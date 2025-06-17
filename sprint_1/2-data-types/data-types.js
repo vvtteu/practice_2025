@@ -8,7 +8,36 @@
 
 
 // Код задания 1
+let string = "Dasha";
+console.log(typeof string);
 
+let number = 18;
+console.log(typeof number);
+
+let bool = false;
+console.log(typeof bool);
+
+let empty = null;
+console.log(typeof empty);
+
+let undef;
+console.log(typeof undef);
+
+let symbol = Symbol("id");
+console.log(typeof symbol);
+
+let BigNum = BigInt(19382782738278);
+console.log(typeof BigNum);
+
+let school = {
+    number: 23,
+    addres: "ул. Пушкина",
+    isWorking: true
+};
+console.log(typeof school);
+
+let arr = [10, 20, 30, "груша"];
+console.log(typeof arr);
 
 /**
  * Задание 2.
@@ -18,7 +47,14 @@
 
 
 // Код задания 2
+let str1 = "123";
+let num = Number(str1);
 
+let str2 = "123";
+console.log(str2 + 5); //выведет 1234, число 5 преобразуется в строку и произойдет сложение строк
+
+let num1 = Number(str2);
+console.log(num1 + 5); //выведет 128, число 5 складывается с числом 123
 
 /**
  * Задание 3.
@@ -28,7 +64,20 @@
 
 
 // Код задания 3
+function type(str) {
+    if (typeof str === "string") {
+        console.log("Это строка");
+    } else if (typeof str === "number") {
+        console.log("Это число");
+    } else if (typeof str === "boolean") {
+        console.log("Это булевый");
+    } else {
+        console.log("Другой тип");
+    }
+}
 
+let num2 = 34;
+type(num2);
 
 /**
  Задание 4.
@@ -44,3 +93,12 @@
  **/
 
 // Код задания 4
+let a;
+let b = null;
+
+console.log(a == b);  // true
+console.log(a === b); // false
+console.log(typeof a); // undenfined
+console.log(typeof b); // object
+
+// отличие в том, что null это отсутствующий обьект, а undenfined это значение, которое не инициализировали
