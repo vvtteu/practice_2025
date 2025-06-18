@@ -5,6 +5,13 @@
  **/
 
 // Код задания 1
+const person = {
+    firstName: "Даша",
+    lastName: "Кузнецова",
+    age: 18
+};
+
+console.log(person.firstName + " " + person.lastName)
 
 
 /**
@@ -13,6 +20,8 @@
  **/
 
 // Код задания 2
+person.city = "Moscow";
+console.log(person)
 
 /**
  * Задание 3.
@@ -20,6 +29,8 @@
  **/
 
 // Код задания 3
+delete person.age;
+console.log(person)
 
 
 /**
@@ -28,7 +39,9 @@
  **/
 
 // Код задания 4
-
+for(let key in person) {
+    console.log(key + ": " + person[key]);
+}
 
 /**
  * Задание 5.
@@ -36,7 +49,10 @@
  **/
 
 // Код задания 5
-
+function getKeys(obj) {
+    return Object.keys(obj);
+}
+console.log(getKeys(person));
 
 /**
  * Задание 6.
@@ -44,6 +60,11 @@
  **/
 
 // Код задания 6
+function getValues(obj) {
+    return Object.values(obj);
+}
+
+console.log(getValues(person));
 
 /**
  * Задание 7.
@@ -51,5 +72,13 @@
  **/
 
 // Код задания 7
+const person2 = {
+    firstName: "Даша",
+    age: 18,
+    city: "Izhevsk",
+    greet() {
+        console.log(`Привет, ${this.firstName}`)
+    }
+};
 
-
+person2.greet()
