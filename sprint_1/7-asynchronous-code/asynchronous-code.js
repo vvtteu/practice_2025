@@ -7,7 +7,10 @@
  **/
 
 // Код задания 1
-
+function dekayLog(msg, ms) {
+    setTimeout(() => console.log(msg), ms);
+}
+dekayLog("Привет", 1000);
 
 /**
  * Задание 2.
@@ -15,7 +18,12 @@
  **/
 
 // Код задания 2
-
+function sequentialLogs() {
+    setTimeout(() => console.log(1), 1000);
+    setTimeout(() => console.log(2), 2000);
+    setTimeout(() => console.log(3), 3000);
+}
+sequentialLogs();
 
 /**
  * Задание 3.
@@ -24,6 +32,19 @@
  **/
 
 // Код задания 3
+function checkNumber(num) {
+    return new Promise((resolve, reject) => {
+        if(num > 10) {
+            resolve("ОК");
+        } else {
+            reject("Too small");
+        }
+    });
+}
+
+checkNumber(15)
+  .then(result => console.log(result)) 
+  .catch(error => console.error(error));
 
 /**
  * Задание 4.
@@ -32,7 +53,24 @@
  **/
 
 // Код задания 4
+function fakeFetch(url) {
+    return new Promise((resolve, reject) => {
+        if (!url) reject("Url не указан");
+        setTimeout(() => resolve(`${url} loaded`), 2000);
+    });
+}
 
+async function fakeFetch1() {
+    try {
+        const result = await fakeFetch();
+        console.log(result);
+    } catch(error) {
+        console.error(error);
+    }
+    
+}
+
+fakeFetch1();
 
 /**
  * Задание 5.
@@ -44,6 +82,12 @@
  **/
 
 // Код задания 5
+new Promise((resolve) => resolve(5)) 
+    .then(num => num * 2)
+    .then(num => num + 10)
+    .then(num => num / 3)
+    .then(num => console.log(num))
+    .catch(error => console.error(error));
 
 
 /**
@@ -53,7 +97,17 @@
  **/
 
 // Код задания 6
+async function loadData() {
+    try {
+        const result = await fakeFetch("vvv");
+        console.log(result);
+    } catch(error) {
+        console.error(error);
+    }
+    
+}
 
+loadData();
 
 /**
  * Задание 7.
@@ -62,7 +116,14 @@
  **/
 
 // Код задания 7
+function loadAll(urls) {
+    const promises = urls.map(url => fakeFetch(url));
+    return Promise.allSettled(promises)
+    .then(results => console.log(results))
+    .catch(error => console.error(error))
+}
 
+loadAll(["url1", "url2", "url3"]);
 
 /**
  * Задание 8.
@@ -71,15 +132,37 @@
  **/
 
 // Код задания 7
+function loadFirst(urls) {
+    const promises = urls.map(url => fakeFetch(url));
+    return Promise.race(promises)
+    .then(results => console.log(results))
+    .catch(error => console.error(error))
+}
 
-
+loadFirst(["url4", "url5", "url6"]);
 /**
  * Задание 9.
  * Напиши функцию `processSequentially(arr, asyncFn)`, которая вызывает `asyncFn` для каждого элемента массива последовательно.
  **/
 
 // Код задания 9
+async function processSequentially(arr, asyncFn) {
+    const result = [];
+    for(let i of arr) {
+        try {
+            const res = await asyncFn(i);
+            result.push(res);
+        } catch (error) {
+            console.error(error);
+        }
+        }
+        return result;
+    }
 
+const urls = ['vvv', 'vvv1', null, 'vvv3'];
+
+processSequentially(urls, fakeFetch)
+    .then(results => console.log(results))
 
 /**
  * Задание 10.
@@ -87,3 +170,6 @@
  **/
 
 // Код задания 10
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
