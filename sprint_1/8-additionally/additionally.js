@@ -7,7 +7,7 @@
 const createCounter = function (n) {
 
     return function () {
-
+        
     };
 };
 
@@ -26,8 +26,16 @@ const createCounter = function (n) {
  * @return {number}
  */
 const reduce = function(nums, fn, init) {
-
+    let result = init;
+    for(let i of nums){
+        result = fn(result, i);
+    }
+    return result;
 };
+
+const nums1 = [1, 2, 3, 4];
+const sumFn = (acc, curr) => acc + curr;
+console.log(reduce(nums1, sumFn, 0));
 
 // Код задания 3
 /**
@@ -60,8 +68,14 @@ function memoize(fn) {
  * @return {Promise}
  */
 var addTwoPromises = async function(promise1, promise2) {
-
+    const [num1, num2] = await Promise.all([promise1, promise2]);
+    return num1 + num2;
 };
+
+const promise1 = new Promise(resolve => setTimeout(() => resolve(2), 20));
+const promise2 = new Promise(resolve => setTimeout(() => resolve(5), 60));
+addTwoPromises(promise1, promise2)
+    .then(console.log);
 
 /**
  * addTwoPromises(Promise.resolve(2), Promise.resolve(2))
@@ -75,11 +89,18 @@ var addTwoPromises = async function(promise1, promise2) {
  * @param {number} size
  * @return {Array}
  */
-const chunk = function(arr, size) {
 
+
+const chunk = function(arr, size) {
+    const result = [];
+    for(let i = 0; i < arr.length; i+=size) {
+        let arr1 = arr.slice(i, i+size);
+        result.push(arr1);
+    }
+    return result;
 };
 
-
+console.log(chunk([1,9,6,3,2], 3));
 // Код задания 6
 
 // Код задания 7
