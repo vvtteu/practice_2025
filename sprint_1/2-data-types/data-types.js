@@ -65,14 +65,18 @@ console.log(num1 + 5); //выведет 128, число 5 складываетс
 
 // Код задания 3
 function type(str) {
-    if (typeof str === "string") {
-        console.log("Это строка");
-    } else if (typeof str === "number") {
-        console.log("Это число");
-    } else if (typeof str === "boolean") {
-        console.log("Это булевый");
-    } else {
-        console.log("Другой тип");
+    switch(typeof str) {
+        case 'string' :
+            console.log("Это строка");
+            break;
+        case 'number' :
+            console.log("Это число");
+            break;
+        case 'boolean' :
+            console.log("Это булевый");
+            break;
+        default:
+            console.log("Другой тип");
     }
 }
 
@@ -101,4 +105,4 @@ console.log(a === b); // false
 console.log(typeof a); // undenfined
 console.log(typeof b); // object
 
-// отличие в том, что null это отсутствующий обьект, а undenfined это значение, которое не инициализировали
+// отличие в том, что null это отсутствующий обьект, а undenfined это значение, которого нет

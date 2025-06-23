@@ -36,9 +36,8 @@ function checkNumber(num) {
     return new Promise((resolve, reject) => {
         if(num > 10) {
             resolve("ОК");
-        } else {
-            reject("Too small");
-        }
+        } 
+        reject("Too small");
     });
 }
 

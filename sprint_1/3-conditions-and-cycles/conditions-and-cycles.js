@@ -63,9 +63,8 @@ function blocking() {
 
   if(hour >= 22 || hour < 7) {
       return "Ночная блокировка: операции недоступны";
-  } else {
+  } 
     return true;
-  }
 }
 
 

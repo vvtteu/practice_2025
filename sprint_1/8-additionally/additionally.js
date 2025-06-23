@@ -5,11 +5,15 @@
  * @return {Function} counter
  */
 const createCounter = function (n) {
-
+    let count = n;
     return function () {
-        
+        return count++;
     };
 };
+const counter = createCounter(10);
+console.log(counter()); 
+console.log(counter()); 
+console.log(counter()); 
 
 /**
  * const counter = createCounter(10)
@@ -43,9 +47,20 @@ console.log(reduce(nums1, sumFn, 0));
  * @return {Function}
  */
 function memoize(fn) {
+    const cache = {};  
+    let сount = 0; 
 
     return function(...args) {
-
+        const key = args.join(','); 
+        
+        if (key in cache) {
+            return cache[key]; 
+        }
+        
+        сount++; 
+        const result = fn(...args);
+        cache[key] = result; 
+        return result;
     }
 }
 

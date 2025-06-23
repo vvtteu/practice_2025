@@ -64,8 +64,10 @@ console.log(isEven2(9));
 
 // Код задания 5
 function formatName(firstName, lastName) {
-   return `${lastName} ${firstName[0]}.`
+   const firstSymbol = firstName?.[0] ? `${firstName[0]}.` : '';
+   return `${lastName} ${firstSymbol}`.trim();
 }
+
 console.log(formatName("Иван", "Иванов"))
 
 /**
@@ -79,14 +81,14 @@ console.log(formatName("Иван", "Иванов"))
 
 // Код задания 6
 function translateStatus(code) {
-   return (
-      code === 'success' ? 'Успешно' :
-      code === 'error' ? 'Ошибка' :
-      code === 'pending' ? 'В ожидании' :
-      'Неизвестно'
-   )
+   switch(code) {
+         case 'success': return 'Успешно';
+         case 'error': return 'Ошибка';
+         case 'pending': return 'В ожидании';
+         default: return 'Неизвестно';
+      }
 }
-console.log(translateStatus("pending"))
+console.log(translateStatus("error"))
 
 /**
  * Задание 7.

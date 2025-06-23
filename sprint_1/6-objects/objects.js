@@ -11,7 +11,7 @@ const person = {
     age: 18
 };
 
-console.log(person.firstName + " " + person.lastName)
+console.log(`${person.firstName} ${person.lastName}`);
 
 
 /**
@@ -50,7 +50,11 @@ for(let key in person) {
 
 // Код задания 5
 function getKeys(obj) {
-    return Object.keys(obj);
+    const keys = [];
+    for (let key in obj) {
+        keys.push(key);
+    }
+    return keys;
 }
 console.log(getKeys(person));
 
@@ -61,7 +65,11 @@ console.log(getKeys(person));
 
 // Код задания 6
 function getValues(obj) {
-    return Object.values(obj);
+    const values = [];
+    for (let key in obj) {
+        values.push(obj[key]);
+    }
+    return values;
 }
 
 console.log(getValues(person));
